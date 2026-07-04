@@ -29,8 +29,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'             # cache node_modules ให้ build เร็วขึ้น
-          cache-dependency-path: backend/package-lock.json
+          cache: 'npm'
+          # ปรับตรงนี้ให้ครอบคลุมทัังสองโฟลเดอร์ โดยใช้ตัวหนอน (*) ช่วยจับไฟล์ล็อก
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
 
       # ── Backend ──────────────────────────────
       - name: Install backend dependencies
